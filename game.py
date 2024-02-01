@@ -46,7 +46,7 @@ def game_loop():
     hacker = Hacker('Lain')
     rcmp = RCMP('RCMP Agent')
     
-    while True:  # Infinite loop, but let's cap it for the example
+    while True:  # Infinite loop
         board = hacker.move(board)
         board = rcmp.move(board)
         print_board(board)
