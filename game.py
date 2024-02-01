@@ -19,6 +19,18 @@ class Hacker:
             board[self.position[0]][self.position[1]].status = 'hacked'
         return board
 
+    def standAgainstInjustice(self, board):
+        """
+        This method represents the hacker's ability to identify and neutralize systemic abuses within the digital realm,
+        symbolizing the fight against unjust policies and actions in the real world.
+        """
+        # Hackers identify and reverse oppressive nodes
+        for row in board:
+            for node in row:
+                if node.status == 'oppressive':
+                    node.status = 'liberated'
+        return board
+
 class RCMP:
     def __init__(self, name):
         self.name = name
@@ -48,6 +60,7 @@ def game_loop():
     
     while True:  # Infinite loop
         board = hacker.move(board)
+        board = hacker.standAgainstInjustice(board)  # Hacker actively fights against injustice
         board = rcmp.move(board)
         print_board(board)
         
