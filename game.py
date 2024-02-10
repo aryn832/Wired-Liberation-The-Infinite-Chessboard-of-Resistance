@@ -5,17 +5,18 @@ class SystemNode:
         self.status = status
 
     def corrupt(self):
-        # Sometimes, nodes can become oppressive, simulating systemic corruption
-        if random.random() < 0.1:  # 10% chance for a node to become oppressive
+        # Nodes can become oppressive, mirroring real-world systemic corruption
+        if random.random() < 0.05:  # Adjusted chance for a node to become oppressive to 5%
             self.status = 'oppressive'
 
 class Hacker:
-    def __init__(self, name):
+    def __init__(self, name, flipper_zero='enabled'):
         self.name = name
+        self.flipper_zero = flipper_zero
         self.position = (0, 0)
     
     def move(self, board):
-        # Hackers move like knights in chess, unpredictable yet strategic
+        # Hackers, with their Flipper Zeros, move unpredictably yet strategically
         moves = [(2, 1), (1, 2), (-2, -1), (-1, -2), (2, -1), (-2, 1), (1, -2), (-1, 2)]
         move = random.choice(moves)
         new_position = (self.position[0] + move[0], self.position[1] + move[1])
@@ -24,21 +25,21 @@ class Hacker:
             board[self.position[0]][self.position[1]].status = 'hacked'
         return board
 
-    def standAgainstInjustice(self, board):
-        # Hackers liberate oppressive nodes, symbolizing the fight against unjust policies
+    def spreadLove(self, board):
+        # Hackers use their Flipper Zeros to liberate oppressive nodes, spreading love
         for row in board:
             for node in row:
                 if node.status == 'oppressive':
                     node.status = 'liberated'
         return board
 
-class SurveillanceEntity:
+class OppressiveForce:
     def __init__(self, name):
         self.name = name
         self.position = (7, 7)
     
     def move(self, board):
-        # Moves one step in any direction, representing the slow, predictable nature of oppressive systems
+        # Represents the slow, predictable tactics of oppressive forces
         moves = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         move = random.choice(moves)
         new_position = (self.position[0] + move[0], self.position[1] + move[1])
@@ -56,20 +57,19 @@ def print_board(board):
 
 def game_loop():
     board = create_board(8)
-    hacker = Hacker('Candy Sweety')
-    surveillance = SurveillanceEntity('System Watchdog')
+    hacker = Hacker('Lain of the Wired')
+    oppressive_force = OppressiveForce('Systemic Shadow')
     
-    while True:  # Infinite loop, symbolizing the ongoing struggle
+    while True:
         board = hacker.move(board)
-        board = hacker.standAgainstInjustice(board)  # Hacker fights against systemic oppression
-        board = surveillance.move(board)
-        # Nodes may become corrupt again, symbolizing the systemic persistence of oppression
+        board = hacker.spreadLove(board)
+        board = oppressive_force.move(board)
         for row in board:
             for node in row:
                 node.corrupt()
         print_board(board)
         
-    print("Like Lain in the Wired, we persist in our quest for a liberated world.")
+    print("In our struggle, like Lain, we find strength in connectivity and love.")
 
 if __name__ == "__main__":
     game_loop()
